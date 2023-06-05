@@ -7,24 +7,24 @@ list:
 .global _start
 
 _start:
-    # rdi will contain the partial sum
-    # rbx will contain the index
+    # edi will contain the partial sum
+    # ebx will contain the index
 
-    mov $0, %rbx
-    mov $0, %rdi
+    mov $0, %ebx
+    mov $0, %edi
 
 sumloop_start:
-    cmp $10, %rbx
+    cmp $10, %ebx
     je sumloop_end                  # if end of list, then escape loop
 
-                                    # else add current value to rdi
-    mov list(, %rbx, 4), %rax
-    add %rax, %rdi
-    inc %rbx                        # increment counter
+                                    # else add current value to edi
+    mov list(, %ebx, 4), %eax
+    add %eax, %edi
+    inc %ebx                        # increment counter
     jmp sumloop_start               # unconditional loop
 
 sumloop_end:
-                                    # exit(%rdi)
-    mov $60, %rax                   # syscall 60 is exit
+                                    # exit(%edi)
+    mov $60, %eax                   # syscall 60 is exit
     syscall
 
