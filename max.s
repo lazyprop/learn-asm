@@ -37,6 +37,7 @@ maxloop_end:
                                 # rbx now contains the largest value
                                 # exit(%rbx)
     mov $60, %rax               # syscall 60 is exit
+    mov %rbx, %rdi              # exit uses %rdi
     syscall
 
 
