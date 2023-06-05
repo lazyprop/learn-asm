@@ -18,9 +18,10 @@ make clean          # to remove .o files
 - [x86 Assembly Wikibook](https://en.wikibooks.org/wiki/X86_Assembly)
 - [x86 manpages](https://github.com/ttmo-O/x86-manpages) - Generated from
   Felix Cloutier's reference
-- [List of syscalls](https://filippo.io/linux-syscall-table/)
+- [List of syscalls along with their code](https://faculty.nps.edu/cseagle/assembly/sys_call.html)
+  by cseagle at Naval Postgraduate Schoool
 - See `man syscall` for calling conventions. See `man syscalls` for a list of
-  syscalls. To find the number of a syscall, look at
+  syscalls. To find the number of a syscall, refer to
   `/usr/include/asm/unistd.h`.
 
 
