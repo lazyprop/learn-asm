@@ -1,46 +1,41 @@
-# find the maximum in a list of numbers
+# find the maximum value of a list of integers
 
-.data
+.section .data
 
 list:
-    # .long reserves a 32-bit buffer
-    .long 4, 17, 3, 7, 6, 17, 10, 14, 5, 16
+    .long 1, 2, 3, 4, 5, 6, 7, 8, 20, 10
 
-list_end:
-    .byte
-
-.text
+.section .text
 .global _start
 
 _start:
-    # rax stores current number
-    # rbx stores largest number yet
-    # rdi stores current position in the list
+    # rbx will contain the index
+    # rax will contain the value at current index
+    # rdi will contain the currently largest value
 
     mov $0, %rbx
     mov $0, %rdi
 
-    # loop start
 maxloop_start:
-    cmp $10, %rdi
-    je maxloop_end              # if at end of list then escape loop
+    cmp $10, %rbx
+    je maxloop_end                  # if end of list, then escape loop
 
-    mov list(, %rdi, 4), %rax   # move current item into rax
-    inc %rdi                    # increment counter
+    mov list(, %rbx, 4), %rax       # else mov current value to %rax
+                                    # since we're using the value twice
+                                    # it is better to have it in a register
 
-    cmp %rbx, %rax
-    jle maxloop_start           # if rax <= rbx loop
-    mov %rax, %rbx              # else update the current largest value
-    jmp maxloop_start           # unconditionally loop
+    inc %rbx                        # increment counter
+    
+    cmp %rdi, %rax
+    jle maxloop_start               # if current value in smaller then go to the
+                                    # next iteration
+
+    mov %rax, %rdi                  # else update the current largest value
+
+    jmp maxloop_start               # unconditional loop
 
 maxloop_end:
-                                # rbx now contains the largest value
-                                # exit(%rbx)
-    mov $60, %rax               # syscall 60 is exit
-    mov %rbx, %rdi              # exit uses %rdi
+                                    # exit(%rdi)
+    mov $60, %rax                   # syscall 60 is exit
     syscall
-
-
-
-
 
