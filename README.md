@@ -1,5 +1,13 @@
 # Learning Assembly
 
+To build a program, specify `TARGET` to `make` command. Example:
+```
+make TARGET=hello   # assembles and links
+./hello
+echo $?             # to check the return code
+make clean          # to remove .o files
+```
+
 ## Resources
 
 - [Programming from the Ground
