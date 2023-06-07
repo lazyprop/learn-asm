@@ -6,12 +6,13 @@
 .global _start
 
 
+.type pow,@function
 pow:
     push %rbp               # push old base pointer
     mov %rsp, %rbp          # set new value of base pointer
 
-    mov 24(%rbp), %rcx      # rbx contains exponent
-    mov 16(%rbp), %rbx      # rcx contains base
+    mov 24(%rbp), %rcx      # rcx contains exponent
+    mov 16(%rbp), %rbx      # rbx contains base
     mov $1, %rax            # rax contains result
     mov $0, %rdi            # rdi contains counter
 
