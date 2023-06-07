@@ -10,6 +10,8 @@ make clean          # to remove .o files
 
 ## Resources
 
+### x86 Learning/References
+
 - [Programming from the Ground
   Up](https://download-mirror.savannah.gnu.org/releases/pgubook/ProgrammingGroundUp-1-0-booksize.pdf)
   by Jonathan Bartlett
@@ -24,4 +26,9 @@ make clean          # to remove .o files
   syscalls. To find the number of a syscall, refer to
   `/usr/include/asm/unistd.h`.
 
+### GDB
 
+- [Basic GDB
+  Tutorial](http://www.cs.toronto.edu/~krueger/csc209h/tut/gdb_tutorial.html) by Hoa Nguyen
+- Use [GDB Enhancement Features](https://github.com/hugsy/gef) for a less
+  painful experience.
