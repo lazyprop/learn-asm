@@ -10,25 +10,19 @@ factorial:
     push %rbp
     mov %rsp, %rbp
 
-
     mov 16(%rbp), %rbx       # load n into rbx
     cmp $1, %rbx
     je factorial_basecase
 
-    mov %rbx, %rcx          # make copy of n
-    dec %rcx
-
-    push %rbx               # save %rbx. it will be lost in the function call
-
-    push %rcx               # push argument for recursive call
+    push %rbx               # save n. it will be lost in the function call
+    dec %rbx                # we pass (n-1) to function call
+    push %rbx               # push argument for function call
     call factorial
 
-    pop %rcx                # pops off the argument
-    pop %rbx
-
+    mov 8(%rsp), %rbx      # retrieve saved value of rbx := n
     mul %rbx                # %rax := %rax * %rbx
 
-    jmp factorial_ret
+    jmp factorial_ret       # return
 
 factorial_basecase:
     mov $1, %rax            # fact(1) = 1
