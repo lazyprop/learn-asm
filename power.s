@@ -5,7 +5,6 @@
 .section .text
 .global _start
 
-
 .type pow,@function
 pow:
     push %rbp               # push old base pointer
@@ -46,5 +45,4 @@ _start:
     mov %rax, %rdi          # return the result
     mov $60, %rax           # syscall 60 is exit
     syscall
-    
 

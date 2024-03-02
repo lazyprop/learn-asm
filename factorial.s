@@ -19,7 +19,7 @@ factorial:
     push %rbx               # push argument for function call
     call factorial
 
-    mov 8(%rsp), %rbx      # retrieve saved value of rbx := n
+    mov 8(%rsp), %rbx       # retrieve saved value of rbx := n
     mul %rbx                # %rax := %rax * %rbx
 
     jmp factorial_ret       # return

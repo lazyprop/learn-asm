@@ -1,11 +1,6 @@
-all: $(TARGET)
+AS=nasm -felf64 -g
+CC=ld
 
-$(TARGET): $(TARGET).s
-	as $(TARGET).s -o $(TARGET).o
-	ld $(TARGET).o -o $(TARGET)
-
-run: $(TARGET)
-	./$(TARGET)
-
-clean:
-	rm *.o
+vecsum: vecsum.asm
+	$(AS) vecsum.asm -o bin/vecsum.o
+	$(CC) bin/vecsum.o -o bin/vecsum
